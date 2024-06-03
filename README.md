@@ -1,4 +1,4 @@
-# Simple Ecommerce Website
+# Realtime Chat App
 
 Realtime Chat app with Javascript and Websocket.
 
