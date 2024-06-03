@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Socket.IO chat</title>
+
+</head>
+
+<body>
+
+  <div style="display: flex; justify-content: center; align-items: center; height: 80dvh;">
+    <form action="chat.html">
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="display: flex; gap: 3px;">
+          <input id="code" name="code" autocomplete="off" required placeholder="Code" />
+          <div id="generate-btn" style="cursor: pointer; border: 1px solid black; border-radius: 5px; padding: 5px;">RAND</div>
+        </div>
+        
+        <input id="username" name="username" autocomplete="off" required placeholder="Username"/>
+        <button id="join">Join</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const codeInputElement = document.getElementById('code');
+    const userInputElement = document.getElementById('username');
+    codeInputElement.focus();
+
+    const generateBtn = document.getElementById('generate-btn');
+
+    function generateCode(length) {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        let result = '';
+        for (let i = 0; i < length; i++) {
+            result += characters.charAt(Math.floor(Math.random() * characters.length));
+        }
+        return result;
+    }
+
+    generateBtn.addEventListener('click', function() {
+        const code = generateCode(8); // Change 8 to the desired length of the code
+        codeInputElement.value = code;
+        userInputElement.focus();
+    });
+  </script>
+
+</body>
+
+</html>

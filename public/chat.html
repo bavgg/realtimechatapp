@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Socket.IO chat</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body style="margin: 0; padding: 0; box-sizing: border-box;">
+  <div style="display: grid; grid-template-columns: 1fr 2fr; height: 100vh;">
+
+    <div style="border: 1px solid black; padding: 10px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <h1 sty>Code:</h1>
+        <div style="display: flex; flex-direction: column; gap: 5px;">
+          <p id="code" style="margin: 0;"></p>
+          <button id="showBtn">Show</button>
+        </div>
+      </div>
+      <div style="display: flex; gap: 10px;">
+        <h1>Users:</h1>
+        <div id="users-container">
+
+        </div>
+      </div>
+
+    </div>
+
+    <div style="border: 1px solid black; display: flex; flex-direction: column;">
+      <div id="messages-container" style="height: 100%;">
+
+      </div>
+
+      <form id="form"
+        style="display: flex; overflow: hidden; position: relative; bottom: 0; height: 3rem; padding: 0.25rem; background: rgba(0, 0, 0, 0.15);">
+        <input id="input" autocomplete="off" style="width: 100%; padding: 0 1rem;" />
+        <button>Send</button>
+      </form>
+    </div>
+
+  </div>
+
+  <!-- --------------------------- socket library ---------------------------- -->
+  <script src="/socket.io/socket.io.js"></script>
+
+  <script src="./main.js"></script>
+</body>
+
+</html>
