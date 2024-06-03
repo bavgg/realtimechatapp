@@ -3,7 +3,6 @@ const formElement = document.getElementById('form');
 const inputElement = document.getElementById('input');
 const divMessagesContainer = document.getElementById('messages-container');
 const codeElement = document.getElementById('code');
-const showBtn = document.getElementById('showBtn');
 const usersContainerElement = document.getElementById('users-container');
 
 // automatically focus the input element
@@ -42,23 +41,6 @@ formElement.addEventListener('submit', (e) => {
 });
 
 socket.emit('joinsChat', { username, code });
-`
-/* -------------------------------------------------------------------------- */
-/*                             handle code element                            */
-/* -------------------------------------------------------------------------- */
-`
-const maskedCode = '*'.repeat(code.length);
-codeElement.textContent = maskedCode;
-showBtn.addEventListener('click', () => {
-  if (showBtn.innerText === 'Show') {
-    codeElement.innerText = code;
-    showBtn.innerText = 'Hide';
-  } else {
-    codeElement.innerText = maskedCode;
-    showBtn.innerText = 'Show';
-  }
-});
-
 
 `
 <!-- ----------------------------- from server ----------------------------- -->
@@ -71,7 +53,7 @@ socket.on('serverInfoMessage', data => handleInfoMessage(data));
 
 // WARNING function : side effects
 function handleInfoMessage({ code, users }) {
-  
+  codeElement.innerText = code;
   if (users) {
     usersContainerElement.textContent  = '';
     users.map(user => {

@@ -23,7 +23,7 @@ function handleDisconnect(io, socket) {
   const user = removeUser(socket.id);
   if (user) {
     const code = user.code;
-    io.to(code).emit('serverDisconnectMessage', `${user.username} user has left the chat`);
+    io.to(code).emit('serverDisconnectMessage', `${user.username} has left the chat`);
     io.to(code).emit('serverInfoMessage', { code, users: getUsersByCode(code) });
   }
 }
@@ -40,7 +40,7 @@ function handleJoin(io, socket, { username, code }) {
   const user = saveUser(socket.id, username, code);
   socket.join(code);
   socket.emit('serverWelcomeMessage', 'Welcome to ChatApp!');
-  socket.broadcast.to(code).emit('serverBroadcastMessage', `${user.username} user has joined the chat`);
+  socket.broadcast.to(code).emit('serverBroadcastMessage', `${user.username} has joined the chat`);
   io.to(code).emit('serverInfoMessage', { code, users: getUsersByCode(code) });
 }
 
